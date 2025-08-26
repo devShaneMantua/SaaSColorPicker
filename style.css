@@ -1,0 +1,701 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+:root {
+  --background-1: #f0eef6;
+  --background-2: #ffffff;
+
+  --text: #192a3e;
+  --text-gray: #707683;
+
+  --primary: #109cf1;
+  --secondary: #2ed47a;
+  --danger: #e82127;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: #040406;
+}
+
+/*======= GENERAL STYLES ========*/
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.text-muted {
+  color: var(--text-gray);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.dashboard-design {
+  display: flex;
+  border-bottom: 4px solid var(--background-2);
+  background: var(--background-1);
+}
+
+/*======= TEXT SIZES ========*/
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.875rem;
+}
+
+p {
+  font-size: 0.75rem;
+}
+
+a {
+  color: var(--text);
+}
+
+/*======= SIDEBAR ========*/
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 18vw;
+  justify-content: space-between;
+  padding: 2rem;
+  background: var(--background-2);
+  color: var(--text-gray);
+  position: sticky;
+  top: 0;
+}
+
+.sidebar img {
+  width: 8rem;
+  margin-bottom: 2.5rem;
+  cursor: pointer;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 32px 0px;
+  cursor: pointer;
+}
+
+.link i {
+  font-size: 1.125rem;
+}
+
+.navigation .active {
+  color: var(--background-2);
+  position: relative;
+  z-index: 2;
+}
+
+.navigation .active::before {
+  content: "";
+  position: absolute;
+  background: var(--primary);
+  width: 120%;
+  height: 2.75rem;
+  left: -2rem;
+  border-radius: 0px 8px 8px 0px;
+  z-index: -1;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  gap: 14px;
+  cursor: pointer;
+}
+
+/*======= TOP BAR ========*/
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  height: max-content;
+  padding: 1.5rem 2.125rem 2.125rem 2.125rem;
+}
+
+.top-bar .profile {
+  display: flex;
+  gap: 20px;
+}
+
+.top-bar .profile img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.top-bar .profile i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: var(--background-2);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  color: var(--danger);
+  cursor: pointer;
+}
+
+/*======= MAIN ========*/
+main {
+  display: grid;
+  grid-template-columns: auto 25vw;
+  margin: 2.125rem;
+  margin-top: 0rem;
+  gap: 2.125rem;
+}
+
+/*======= LEFT ========*/
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cash-flow {
+  display: flex;
+  background: var(--background-2);
+  border-radius: 12px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.left .cash-flow .card {
+  width: 100%;
+  height: 100%;
+  padding: 24px 28px 24px 28px;
+}
+
+.left .card .title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left .card .title i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  background: var(--background-1);
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+}
+
+.left .card .amount {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 10px 0px 12px 0px;
+}
+
+/*-------- CALENDAR --------*/
+
+.quick-view {
+  display: flex;
+  flex-direction: column;
+  background: var(--background-2);
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  gap: 2.125rem;
+}
+
+.calendar h5 {
+  width: 100%;
+}
+
+.week {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 18px 0 24px 0;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.date .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.week .active .number {
+  background: var(--primary);
+  color: var(--background-2);
+}
+
+.calendar .line {
+  width: 100%;
+  height: 2px;
+  background: var(--background-1);
+}
+
+.quick-view .investments h6 {
+  margin: auto;
+  cursor: pointer;
+}
+
+/*-------- PROGRESS --------*/
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.progress .title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.progress .title .filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.progress .progress-line {
+  width: 100%;
+  height: 6px;
+  position: relative;
+  background-color: var(--background-1);
+  border-radius: 5px;
+}
+
+.progress .progress-line::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 6px;
+  background-color: var(--primary);
+  border-radius: 5px;
+}
+
+/*-------- INVESTMENTS --------*/
+.investments {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.investments .card {
+  display: flex;
+  gap: 18px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.investments .card .content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.investments .card i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: var(--background-1);
+  width: 3.3rem;
+  height: 3rem;
+  border-radius: 12px;
+}
+
+.uil-linkedin {
+  color: #0077b5;
+}
+
+.uil-google {
+  color: #34a853;
+}
+
+.uil-apple {
+  color: #a2aaad;
+}
+
+.investments .card .about {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.investments .card .about .investment-title {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.investments .card .about .info {
+  display: flex;
+  gap: 2rem;
+}
+.investments .card .about .info .number h5 {
+  margin-bottom: 5px;
+}
+
+.investments .card .content .action {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.investments .card .content .action .buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.investments .card .content .action .buttons p {
+  padding: 0.25rem 1rem;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.investments .card .content .action .buttons .buy {
+  background: var(--primary);
+  color: var(--background-2);
+}
+
+/*======= RIGHT ========*/
+
+.right {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  top: 1rem;
+  background: var(--background-2);
+  padding: 1.375rem 1.5rem;
+  border-radius: 12px;
+  gap: 1.5rem;
+}
+
+.right .title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right .title i {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/*-------- BAR GRAPH --------*/
+
+.right .graph {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--background-1);
+  padding-bottom: 1.5rem;
+}
+
+.right .graph .bars .bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  cursor: pointer;
+}
+
+.right .graph .bars .box {
+  width: 34px;
+  background: var(--background-1);
+  border-radius: 8px;
+}
+
+.b1 {
+  height: 105px;
+}
+
+.b2 {
+  height: 142px;
+}
+
+.b3 {
+  height: 80px;
+}
+
+.right .graph .bars .b4 {
+  height: 118px;
+  background: var(--primary);
+}
+
+.right .graph .bars .text-secondary {
+  position: absolute;
+  top: -30px;
+}
+
+.b5 {
+  height: 48px;
+}
+
+.b6 {
+  height: 88px;
+}
+
+.right .line {
+  background: var(--background-1);
+  width: 100%;
+  height: 2px;
+}
+
+/*-------- TRANSACTIONS --------*/
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.transactions-list .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.transactions-list .item:hover {
+  transition: all 300ms ease;
+  background: var(--background-1);
+  border-radius: 4px;
+}
+
+.transactions-list .item .name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/*======= COLOR PICKER ========*/
+
+.tool {
+  position: sticky;
+  bottom: 1rem;
+  width: max-content;
+  margin: auto;
+}
+
+.tool .colors {
+  display: flex;
+  gap: 0.4rem;
+  color: #fff;
+  z-index: 100;
+}
+
+.tool .choose-color {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.7rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 14px;
+}
+
+.tool .choose-color .color {
+  appearance: none;
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 0;
+  border-color: transparent;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.tool .choose-color .group {
+  display: flex;
+}
+
+/*======= INFORMATION PAGE ========*/
+
+.information {
+  height: max-content;
+  width: 100vw;
+  padding: 10% 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.information .colors-chosen {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.information .group-colors {
+  display: flex;
+  gap: 3rem;
+}
+
+.information .color-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #808080;
+}
+
+.information .color-card .show-color {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.information .color-card .color-information .hex {
+  margin-top: 0.6rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.information .color-card .card1 {
+  background: var(--background-1);
+}
+
+.information .color-card .card2 {
+  background: var(--background-2);
+}
+
+.information .color-card .card3 {
+  background: var(--text);
+}
+
+.information .color-card .card4 {
+  background: var(--text-gray);
+}
+
+.information .color-card .card5 {
+  background: var(--primary);
+}
+
+.information .color-card .card6 {
+  background: var(--secondary);
+}
+
+.information .color-card .card7 {
+  background: var(--danger);
+}
+
+/*-------- MORE --------*/
+
+.more {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  color: #fff;
+}
+
+.more .text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.more .links {
+  display: flex;
+  gap: 2rem;
+}
+
+.more .links .website {
+  color: #ff58ca;
+}
+
+.more .links .linkedin {
+  color: #75faff;
+}
+
+.more h6 {
+  color: #808080;
+}
