@@ -44,6 +44,12 @@ function normalizeHex(hex) {
   return value.toUpperCase();
 }
 
+function isValidHex(hex) {
+  if (!hex) return false;
+  const value = hex.trim();
+  return /^#?[0-9a-fA-F]{3}$/.test(value) || /^#?[0-9a-fA-F]{6}$/.test(value);
+}
+
 function setColorSlot(key, hex) {
   const slot = colorSlots[key];
   if (!slot) return;
@@ -162,6 +168,7 @@ function updatePickerUI() {
   const svArea = document.getElementById("svArea");
   const pickerValue = document.getElementById("pickerValue");
   const liveChip = document.getElementById("liveChip");
+  const hexInput = document.getElementById("pickerHexInput");
 
   const currentHex = hsvToHex(hue, sat, val);
   const satGradient = `linear-gradient(90deg, #fff, hsl(${hue}, 100%, 50%))`;
@@ -170,6 +177,7 @@ function updatePickerUI() {
   }
   if (pickerValue) pickerValue.textContent = currentHex;
   if (liveChip) liveChip.style.background = currentHex;
+  if (hexInput) hexInput.value = currentHex;
 
   const svRect = svArea?.getBoundingClientRect();
   if (svRect) {
@@ -239,6 +247,7 @@ function wireCustomPicker() {
   const hueTrack = document.getElementById("hueTrack");
   const closeBtn = document.getElementById("pickerClose");
   const picker = document.getElementById("customPicker");
+  const hexInput = document.getElementById("pickerHexInput");
 
   document.querySelectorAll(".swatch[data-slot]").forEach((button) => {
     button.addEventListener("click", () => openPicker(button.dataset.slot));
@@ -272,6 +281,25 @@ function wireCustomPicker() {
 
   if (closeBtn) {
     closeBtn.addEventListener("click", closePicker);
+  }
+
+  if (hexInput) {
+    const applyHex = () => {
+      const value = hexInput.value.trim();
+      if (!isValidHex(value)) return;
+      const normalized = normalizeHex(value);
+      setColorSlot(activeSlot, normalized);
+      setFromHex(normalized);
+    };
+
+    hexInput.addEventListener("change", applyHex);
+    hexInput.addEventListener("blur", applyHex);
+    hexInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        applyHex();
+      }
+    });
   }
 
   // Close on outside click
