@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Colors</title>
+    <title>Decide Colors by SDM</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css"
@@ -59,7 +59,7 @@
       <div class="page">
         <!--============== TOP BAR ==============-->
         <div class="top-bar">
-          <h3 class="bold">SaaS color decide</h3>
+          <h3 class="bold">SaaS Color Decide</h3>
           <div class="profile">
             <i class="uil uil-bell"></i>
             <img src="./images/profile.png" alt="Profile picture" />
@@ -165,7 +165,7 @@
                   </p>
                   <div class="filter">
                     <p class="text-muted">
-                      Show: <span class="text-primary">This week</span>
+                      Show: <span class="text-primary">This year</span>
                     </p>
                     <i class="uil uil-angle-down"></i>
                   </div>
@@ -207,7 +207,7 @@
 
                       <div class="buttons">
                         <p class="view">View</p>
-                        <p class="buy bold">Buy</p>
+                        <p class="buy bold">Trade</p>
                       </div>
                     </div>
                   </div>
@@ -240,7 +240,7 @@
 
                       <div class="buttons">
                         <p class="view">View</p>
-                        <p class="buy bold">Buy</p>
+                        <p class="buy bold">Trade</p>
                       </div>
                     </div>
                   </div>
@@ -275,7 +275,7 @@
 
                       <div class="buttons">
                         <p class="view">View</p>
-                        <p class="buy bold">Buy</p>
+                        <p class="buy bold">Trade</p>
                       </div>
                     </div>
                   </div>
@@ -339,6 +339,14 @@
             </div>
 
             <div class="transactions-list">
+              <div class="item">
+                <div class="name">
+                  <i class="uil uil-arrow-up text-muted"></i>
+                  <p class="text-muted">Designed this for visuals only</p>
+                </div>
+                <p class="text-secondary">+$9.99</p>
+              </div>
+
               <div class="item">
                 <div class="name">
                   <i class="uil uil-arrow-down text-muted"></i>
@@ -415,77 +423,67 @@
       <div class="colors">
         <div class="choose-color">
           <h6>Primary</h6>
-          <input
-            type="color"
-            id="colorPicker3"
-            value="#109cf1"
-            onchange="updateColor3()"
-            class="color"
-          />
+          <button class="swatch" data-slot="primary" aria-label="Pick primary color"></button>
         </div>
 
         <div class="choose-color">
           <h6>Background</h6>
           <div class="group">
-            <input
-              type="color"
-              id="colorPicker1a"
-              value="#f0eef6"
-              onchange="updateColor1a()"
-              class="color"
-            />
-            <input
-              type="color"
-              id="colorPicker1b"
-              value="#f0eef6"
-              onchange="updateColor1b()"
-              class="color"
-            />
+            <button class="swatch" data-slot="background1" aria-label="Pick background 1 color"></button>
+            <button class="swatch" data-slot="background2" aria-label="Pick background 2 color"></button>
           </div>
         </div>
 
         <div class="choose-color">
           <h6>Text</h6>
           <div class="group">
-            <input
-              type="color"
-              id="colorPicker2a"
-              value="#192a3e"
-              onchange="updateColor2a()"
-              class="color"
-            />
-            <input
-              type="color"
-              id="colorPicker2b"
-              value="#192a3e"
-              onchange="updateColor2b()"
-              class="color"
-            />
+            <button class="swatch" data-slot="text" aria-label="Pick text color"></button>
+            <button class="swatch" data-slot="textGray" aria-label="Pick secondary text color"></button>
           </div>
         </div>
 
         <div class="choose-color">
           <h6>Secondary</h6>
-          <input
-            type="color"
-            id="colorPicker4"
-            value="#2ed47a"
-            onchange="updateColor4()"
-            class="color"
-          />
+          <button class="swatch" data-slot="secondary" aria-label="Pick secondary color"></button>
         </div>
 
         <div class="choose-color">
           <h6>Danger</h6>
-          <input
-            type="color"
-            id="colorPicker5"
-            value="#e82127"
-            onchange="updateColor5()"
-            class="color"
-          />
+          <button class="swatch" data-slot="danger" aria-label="Pick danger color"></button>
         </div>
 
+        <div class="choose-color reset-card">
+          <h6>Reset</h6>
+          <button class="reset-swatch" id="resetPalette" aria-label="Reset to default colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 20v-6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 9a8 8 0 0 0-14.8-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 15a8 8 0 0 0 14.8 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Custom Color Picker Popover -->
+    <div class="picker" id="customPicker" aria-hidden="true">
+      <div class="picker-header">
+        <p id="pickerLabel">Adjust color</p>
+        <span id="pickerValue">#109CF1</span>
+      </div>
+      <div class="picker-body">
+        <div class="sv" id="svArea">
+          <div class="sv-cursor" id="svCursor"></div>
+        </div>
+        <div class="hue" id="hueTrack">
+          <div class="hue-cursor" id="hueCursor"></div>
+        </div>
+      </div>
+      <div class="picker-actions">
+        <div class="live-chip" id="liveChip"></div>
+        <button class="pill ghost" id="pickerClose">Close</button>
       </div>
     </div>
 
@@ -497,7 +495,7 @@
             <div class="show-color card1"></div>
 
             <div class="color-information">
-              <h6Z>Background 1</h6>
+              <h6>Background 1</h6>
               <h6 class="hex" id="colorHex1">#F0EEF6</h6>
             </div>
           </div>
@@ -506,7 +504,7 @@
             <div class="show-color card2"></div>
 
             <div class="color-information">
-              <h6Z>Background 2</h6>
+              <h6>Background 2</h6>
               <h6 class="hex" id="colorHex2">#FFFFFF</h6>
             </div>
           </div>
@@ -515,7 +513,7 @@
             <div class="show-color card3"></div>
 
             <div class="color-information">
-              <h6Z>Text 1</h6>
+              <h6>Text 1</h6>
               <h6 class="hex" id="colorHex3">#192A3E</h6>
             </div>
           </div>
@@ -524,7 +522,7 @@
             <div class="show-color card4"></div>
 
             <div class="color-information">
-              <h6Z>Tex 2</h6>
+              <h6>Text 2</h6>
               <h6 class="hex" id="colorHex4">#707683</h6>
             </div>
           </div>
@@ -535,8 +533,8 @@
             <div class="show-color card5"></div>
 
             <div class="color-information">
-              <h6Z>Primary</h6>
-              <h6 class="hex" id="colorHex5">#109cf1</h6>
+              <h6>Primary</h6>
+              <h6 class="hex" id="colorHex5">#109CF1</h6>
             </div>
           </div>
 
@@ -544,8 +542,8 @@
             <div class="show-color card6"></div>
 
             <div class="color-information">
-              <h6Z>Secondary</h6>
-              <h6 class="hex" id="colorHex6">#2ed47a</h6>
+              <h6>Secondary</h6>
+              <h6 class="hex" id="colorHex6">#2ED47A</h6>
             </div>
           </div>
 
@@ -554,7 +552,7 @@
 
             <div class="color-information">
               <h6>Danger</h6>
-              <h6 class="hex" id="colorHex7">#e82127</h6>
+              <h6 class="hex" id="colorHex7">#E82127</h6>
             </div>
           </div>
         </div>
@@ -567,11 +565,20 @@
           
           <div class="links">
             <a href="https://sdm.framer.website/" target="_blank" class="website">My Website</a>
-            <a href="https://www.linkedin.com/in/sdm-design" target="_blank" class="linkedin">My LinkedIn</a>
+            <a href="https://www.linkedin.com/in/shanedelmoiramantua" target="_blank" class="linkedin">My LinkedIn</a>
           </div>
+          <h6>Copyright © 2026 Shane Del Moira S. Mantua. All Rights Reserved.</h6>
         </div>
         
-        <h6>Copyright © 2024 | All Rights Reserved.</h6>
+
+
+        <div class="palette-save">
+          <div class="save-row">
+            <input type="text" id="paletteName" placeholder="Name this palette" aria-label="Palette name" />
+            <button class="pill" id="savePalette" aria-label="Save current palette">Save palette</button>
+          </div>
+          <div class="saved-list" id="savedPalettes"></div>
+        </div>
       </div>
     </div>
 
